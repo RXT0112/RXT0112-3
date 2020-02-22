@@ -1,5 +1,6 @@
 
 /docs
+sockets\
 
 tsd_typings
 
@@ -32,3 +33,6 @@ node_modules
 
 !.data
 !/.gitlab
+
+# don't ignore gitpod config
+!.gitpod.yml
