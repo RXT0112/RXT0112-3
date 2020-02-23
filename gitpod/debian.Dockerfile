@@ -22,7 +22,7 @@ RUN useradd \
 RUN apt update \
   && apt upgrade -y \
   && : "Install Go dependencies for act" \
-  && apt install -y golang-go \
+  && apt install -y golang-go git \
   && apt dist-upgrade -y \
   && apt autoremove -y \
   && rm -r /var/lib/apt/lists/*
