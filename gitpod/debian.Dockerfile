@@ -21,7 +21,7 @@ RUN useradd \
 # APT management
 RUN apt update \
   && apt upgrade -y \
-  && apt install -y curl \
+  && if command -v curl >/dev/null; then apt install -y curl; fi \
   && apt dist-upgrade -y \
   && apt autoremove -y \
   && rm -r /var/lib/apt/lists/*
