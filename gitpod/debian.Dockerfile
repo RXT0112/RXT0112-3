@@ -22,11 +22,11 @@ RUN useradd \
 RUN apt update \
   && apt upgrade -y \
   && : "Install Go dependencies for act" \
-  && apt install -y golang-go git \
+  && apt install -y golang-go git wget \
   && apt dist-upgrade -y \
   && apt autoremove -y \
   && rm -r /var/lib/apt/lists/*
 
 # Add nektos's act to test github actions, Thank You! <3
-RUN if ! command -v act >/dev/null; then go get github.com/nektos/act \
+RUN if ! command -v act >/dev/null; then wget https://github.com/nektos/act/archive/v0.2.1.tar.gz \
   && make -C act install; fi
