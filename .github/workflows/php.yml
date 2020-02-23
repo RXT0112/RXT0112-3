@@ -24,7 +24,7 @@ jobs:
       - name: Linting..
         run: |
           cd "$GITHUB_WORKSPACE" && for file in $(git ls-tree --name-only -r ${{ github.sha }} | grep '\.php$'); do
-            printf 'linting shell file %s' "$file"
+            printf 'linting php file %s\n' "$file"
             "$GITHUB_WORKSPACE/vendor/bin/phplint" --jobs="$(nproc)" --configuration="$GITHUB_WORKSPACE/.github/workflow-config/phplint.yml" "$file"
           done
 
