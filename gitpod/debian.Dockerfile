@@ -18,12 +18,13 @@ RUN useradd \
 	--password gitpod \
 	gitpod || exit 1
 
-# Add nektos's act, Thank You! <3
-RUN curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash
-
 # APT management
 RUN apt update \
   && apt upgrade -y \
+  && apt install -y curl \
   && apt dist-upgrade -y \
   && apt autoremove -y \
   && rm -r /var/lib/apt/lists/*
+
+# Add nektos's act, Thank You! <3
+RUN curl https://raw.githubusercontent.com/nektos/act/master/install.sh | bash
