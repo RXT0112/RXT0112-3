@@ -7,7 +7,7 @@ on:
     paths:
     - '**.php'
 
-composer require overtrue/phplint --dev -vvv
+# composer require overtrue/phplint --dev -vvv
 
 jobs:
   # Linting
