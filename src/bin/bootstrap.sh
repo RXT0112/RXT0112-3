@@ -1,4 +1,25 @@
-#!/usr/bin/env bash
+#!/bin/sh
+# Created by minds developers under AGPL-3 (https://www.gnu.org/licenses/agpl-3.0.en.html) license sometime around 2018
+# Refactored by Jacob Hrbek <kreyren@rixotstudio.cz> under AGPL-3 (https://www.gnu.org/licenses/agpl-3.0.en.html) license in 2020
+
+: "
+	This script is used to setup bootstrap of various distributions by:
+	- Downloading dependencies depending on provided system
+	- Configure nginx so that it can (fixme)
+	- Configure php for (fixme)
+	- Configure cassandra for (fixme)
+	
+	FIXME-DOCS(kreyren): What is this thing doing?	
+"
+
+# Master unset - Used to unset variables after runtime
+masterUnset="release commonPath"
+
+# Source common-shell
+commonPath="src/common-shell"
+[ ! -f "$commonPath" ] && { printf 'FATAL: %s\n' "Unable to find '$commonPath' from current directory" ; exit 1 ;}
+. "$commonPath"
+sourcecheck || die 1 "Unable to source common-code in '$commonPath'"
 
 php_version="7.0"
 php_conf="/etc/php/$php_version/fpm/php.ini"
@@ -6,44 +27,31 @@ fpm_conf="/etc/php/$php_version/fpm/pool.d/www.conf"
 cassandra_version="3.0.9"
 cassandra_so="/usr/lib/php/20151012/cassandra.so"
 
-add-apt-repository -y ppa:ondrej/php
-add-apt-repository -y ppa:openjdk-r/ppa
-echo "deb http://debian.datastax.com/community stable main" > /etc/apt/sources.list.d/cassandra.sources.list
-curl -sS -L http://debian.datastax.com/debian/repo_key | sudo apt-key add -
-
-apt-get update
-apt-get install -y \
-  nginx \
-  wget \
-  openssh-client \
-  curl \
-  git \
-  php$php_version \
-  php$php_version-dev \
-  php$php_version-bcmath \
-  php$php_version-common \
-  php$php_version-ctype \
-  php$php_version-fpm \
-  php$php_version-mbstring \
-  php$php_version-mcrypt \
-  php$php_version-pdo \
-  cassandra=$cassandra_version cassandra-tools=$cassandra_version \
-  openjdk-8-jre \
-  rabbitmq-server \
-  openssl \
-  php$php_version-gd \
-  php$php_version-xml \
-  php$php_version-curl \
-  php$php_version-json \
-  php$php_version-zip
+# Configure target system
+case "$release" in
+	ubuntu/*)
+		fixme "Configuration for '$release' has to be made"
+	;;
+	debian/*)
+		fixme "Configuration for '$release' has to be made"
+	;;
+	exherbo/*)
+		fixme "Configuration for '$release' has to be made"
+	;;
+	gentoo/*)
+		fixme "Configuration for '$release' has to be made"
+	;;
+	*) die 2 "Unsupported system '$release' has been parsed in bootstrap.sh"
+esac
 
 # Setup nginx configs
+fixme "nginx configuration has to be reworked to match code standard"
 rm -rf /etc/nginx/sites-enabled/default
 cp -f /var/www/Minds/conf/nginx-site.conf /etc/nginx/sites-enabled/minds.conf
 cp -f /var/www/Minds/conf/nginx.conf /etc/nginx/nginx.conf
 
 # Tweak PHP configs
-
+fixme "PHP configuration has to be reworked to match code standard"
 sed -i -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" ${php_conf} && \
 sed -i -e "s/upload_max_filesize\s*=\s*2M/upload_max_filesize = 100M/g" ${php_conf} && \
 sed -i -e "s/post_max_size\s*=\s*8M/post_max_size = 100M/g" ${php_conf} && \
@@ -63,7 +71,7 @@ sed -i -e "s/;listen.group = nobody/listen.group = nginx/g" ${fpm_conf} && \
 sed -i -e "s/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm7.sock/g" ${fpm_conf}
 
 # Cassandra options
-
+fixme "Cassandra configuration has to be reworked to match code standard"
 sed -i "s/^listen_address:.*/listen_address: 127.0.0.1/" /etc/cassandra/cassandra.yaml
 sed -i "s/^\(\s*\)- seeds:.*/\1- seeds: 127.0.0.1/" /etc/cassandra/cassandra.yaml
 sed -i "s/^rpc_address:.*/rpc_address: 0.0.0.0/" /etc/cassandra/cassandra.yaml
