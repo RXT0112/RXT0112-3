@@ -104,7 +104,7 @@ If you'd like to contribute to the Minds project, check out the [Contribution](h
 Please report all security issues to [security@minds.com](mailto:security@minds.com).
 
 ## License
-[AGPLv3](https://www.minds.org/docs/license.html). Please see the license file of each repository.
+[AGPLv3](https://www.minds.org/docs/license.html). Please see the license file of each repository and file where applies.
 
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FRXT0112%2FRXT0112-3.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FRXT0112%2FRXT0112-3?ref=badge_large)
