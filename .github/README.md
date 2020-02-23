@@ -3,6 +3,8 @@ Minds
 Minds is an open-source, encrypted and reward-based social networking platform. https://minds.com
 
 ## Docs
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FRXT0112%2FRXT0112-3.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FRXT0112%2FRXT0112-3?ref=badge_shield)
+
 Full documentation can be found at [https://developers.minds.com/](https://developers.minds.com/)
 
 ## Repositories
@@ -103,6 +105,9 @@ Please report all security issues to [security@minds.com](mailto:security@minds.
 
 ## License
 [AGPLv3](https://www.minds.org/docs/license.html). Please see the license file of each repository.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FRXT0112%2FRXT0112-3.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FRXT0112%2FRXT0112-3?ref=badge_large)
 
 ## Credits
 [PHP](https://php.net), [Cassandra](http://cassandra.apache.org/), [Angular2](http://angular.io), [Nginx](https://nginx.com), [Ubuntu](https://ubuntu.com), [OpenSSL](https://www.openssl.org/), [RabbitMQ](https://www.rabbitmq.com/), [Elasticsearch](https://www.elastic.co/), [Cordova](https://cordova.apache.org/), [Neo4j](https://neo4j.com/), [Elgg](http://elgg.org), [Node.js](https://nodejs.org/en/), [MongoDB](https://www.mongodb.com/), [Redis](http://redis.io/), [WebRTC](https://webrtc.org/), [Socket.io](http://socket.io/), [TinyMCE](https://www.tinymce.com/), [Ionic](http://ionicframework.com/), [Requirejs](http://requirejs.org/), [OAuth](http://oauth.net/2/), [Apigen](http://www.apigen.org/), [Braintree](https://www.braintreepayments.com/). If any are missing please feel free to add.
