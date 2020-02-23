@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Installing dependencies..
-        run: if ! apt list --installed | grep -qP ".*jsonlint.*"; then apt install -y jsonlint; fi
+        run: if ! apt list --installed | grep -qP ".*jsonlint.*"; then sudo apt install -y jsonlint; fi
       - name: Linting..
         run: |
           cd "$GITHUB_WORKSPACE" && for file in $(git ls-tree --name-only -r ${{ github.sha }} | grep '\.json$'); do
