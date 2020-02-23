@@ -28,5 +28,5 @@ RUN apt update \
   && rm -r /var/lib/apt/lists/*
 
 # Add nektos's act to test github actions, Thank You! <3
-RUN if ! command -v act >/dev/null; then go get https://github.com/nektos/act.git \
+RUN if ! command -v act >/dev/null; then go get github.com/nektos/act \
   && make -C act install; fi
