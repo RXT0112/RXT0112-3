@@ -29,6 +29,6 @@ RUN apt update \
 # Add nektos's act to test github actions, Thank You! <3
 # NOTICE: Unable to build -> Disabled for now
 RUN if ! command -v act >/dev/null; false; then \
-  apt install -y golang-go git wget
+  apt install -y golang-go git wget \
   && wget https://github.com/nektos/act/archive/v0.2.1.tar.gz \
   && make -C act install; fi
