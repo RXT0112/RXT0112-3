@@ -36,3 +36,6 @@ node_modules
 
 # don't ignore gitpod config
 !.gitpod.yml
+
+# don't ignore github configs
+!.github
