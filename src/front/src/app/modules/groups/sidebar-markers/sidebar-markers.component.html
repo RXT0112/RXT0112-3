@@ -1,0 +1,61 @@
+<ul class="m-groupSidebarMarkers__list m-scroll__thin" #list>
+  <li style="display:flex">
+    <a [routerLink]="['/groups/create']">
+      <m-tooltip
+        [anchor]="tooltipsAnchor"
+        [useParentPosition]="true"
+      >
+        <i class="material-icons" m-tooltip--anchor>add</i>
+        <span i18n="@@M__COMMON__NEW_GROUP">New group</span>
+
+        <ng-container i18n="@@M__COMMON__NEW_GROUP">
+          New group
+        </ng-container>
+      </m-tooltip>
+    </a>
+  </li>
+
+  <li *ngFor="let group of groups" [class.has-marker]="group.hasMarker">
+    <a [routerLink]="['/groups/profile', group.guid]">
+      <m-tooltip
+        [anchor]="tooltipsAnchor"
+        [useParentPosition]="true"
+      >
+        <img [class.m-pulsating--small]="group.hasGathering$ | async" [src]="'fs/v1/avatars/' + group.guid + '/' + group.icontime" m-tooltip--anchor/>
+        <span>{{group.name}}</span>
+
+        <ng-container>
+          {{group.name}}
+        </ng-container>
+      </m-tooltip>
+    </a>
+  </li>
+
+  <!-- If no results -->
+  <li *ngIf="(!groups || groups.length === 0) && !inProgress">
+    <a [routerLink]="['/groups/top']">
+      <m-tooltip
+        [anchor]="tooltipsAnchor"
+        [useParentPosition]="true"
+      >
+        <img src="https://cdn-assets.minds.com/front/dist/en/assets/logos/bulb.svg" m-tooltip--anchor/>
+        <span>Noname</span>
+
+        <ng-container>
+          Join some groups to populate this sidebar
+        </ng-container>
+      </m-tooltip>
+    </a>
+  </li>
+
+  <infinite-scroll
+    distance="25%"
+    [scrollSource]="list"
+    (load)="load()"
+    [moreData]="moreData"
+    [inProgress]="inProgress"
+    [iconOnly]="true"
+    *ngIf="moreData"
+  >
+  </infinite-scroll>
+</ul>

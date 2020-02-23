@@ -1,0 +1,31 @@
+@import "defaults";
+
+m-login {
+  display: block;
+  @include m-theme(){
+    background-color: themed($m-white);
+  }
+}
+
+.m-login {
+  margin: 100px auto;
+  display: flex;
+  max-width: 990px;
+  flex-direction: row;
+  min-height: 100%;
+
+  @media screen and (max-width: $max-mobile) {
+    flex-direction: column;
+  }
+
+  > div {
+    margin: 16px;
+    flex: 1;
+  }
+
+  h3 {
+    font-weight: 800;
+    font-size: 18px;
+    margin: 0 8px;
+  }
+}
