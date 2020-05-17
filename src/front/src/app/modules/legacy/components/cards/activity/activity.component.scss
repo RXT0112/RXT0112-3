@@ -1,0 +1,162 @@
+.tabs .m-wire-button{
+  transform: scale(0.8) translateY(-4px);
+}
+.m-pin-button {
+  overflow: visible;
+  
+  .m-tooltip--bubble {
+    width:100px;
+  }
+}
+
+.m-pin-button[disabled]:hover {
+  @include m-theme(){
+    background-color: transparent;
+  }
+}
+
+minds-activity {
+  .m-owner-block--remind {
+    padding-bottom: 8px !important;
+  }
+  .m-activity--image, .m-activity--video {
+    margin-bottom: 8px;
+  }
+
+  .m-activity--video {
+    m-video {
+      @include m-theme(){
+        background-color: themed($m-black-always);
+      }
+    }
+  }
+
+  m-safe-toggle {
+    .m-safe-toggle {
+      display: inline-block;
+
+      label {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        vertical-align: middle;
+        height: 24px;
+        width: 24px;
+        min-width: 24px;
+        min-height: 24px;
+
+        i {
+          font-size: 18px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  m-nsfw-selector {
+    display: inline-block;
+    border-radius: 24px;
+    padding: 3px 16px;
+    @include m-theme(){
+      border: 1px solid themed($m-grey-100);
+    }
+
+    .m-nsfwSelector__label {
+      > * {
+       vertical-align: middle;
+     }
+     > span {
+       font-size: 13px;
+       padding-left: 4px;
+     }
+   }
+  }
+}
+
+.m-activity--metrics{
+
+  position: absolute;
+  bottom: -10px;
+  right: -5px;
+
+  &.m-activity--metrics-wire{
+    width: 100%;
+    display: flex;
+    right: auto;
+  }
+
+  .m-activity--metrics-inner{
+    padding-left: 8px;
+    margin: auto;
+
+    padding: 3px 0 3px 8px;
+    font-size: 14px;
+    line-height: 9px;
+    border-radius: 3px;
+    vertical-align: middle;
+    //text-align: center;
+    display: flex;
+    justify-content: space-around;
+    max-width: 300px;
+    //box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.07), 0 4px 2px -2px rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.07);
+
+    @include m-theme(){
+      background-color: themed($m-white);
+      color: themed($m-grey-600);
+    }
+
+    m--crypto-token-symbol {
+      .m--crypto-token-symbol--stroke {
+        @include m-theme(){
+          stroke: themed($m-grey-600);
+        }
+      }
+
+      .m--crypto-token-symbol--fill {
+        @include m-theme(){
+          fill: themed($m-grey-600);
+        }
+      }
+    }
+  }
+
+  .m-activity--metrics-metric{
+    font-size: 10px;
+    display: inline-block;
+    vertical-align: middle;
+
+    > * {
+      vertical-align: middle;
+    }
+    i, m--crypto-token-symbol {
+      font-size: 12px;
+    }
+    span {
+      padding-right: 8px;
+    }
+  }
+}
+
+minds-groups-profile-feed .m-pin-button {
+  //display: none;
+}
+
+.m-activity__blockedRemind {
+  margin: 0 16px;
+  border-radius: 6px;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+
+  @include m-theme(){
+    background-color: rgba(themed($m-grey-50), 0.7);
+  }
+
+  .m-activityBlockedRemind__description {
+    opacity: 0.75;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}

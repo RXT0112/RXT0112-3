@@ -1,0 +1,20 @@
+# This is configuration file recognized by github for funding button
+
+# FIXME: This should be referenced in docs since we have too many contributors to fit in github's scope
+
+# Limited on 4 github-sponsor enabled accounts
+github: kreyren
+
+# misc
+patreon: RiXotStudio
+open_collective: rixotstudio
+ko_fi: rixotstudio
+tidelift: RiXotStudio/RiXotStudio
+community_bridge: rixotstudio
+liberapay: RiXotStudio
+issuehunt: rixotstudio
+otechie: rixotstudio
+
+# Replace with up to 4 custom sponsorship URLs e.g., ['link1', 'link2']
+# NOTICE: minds does not seem to accept donations
+custom: https://my.fsf.org/join

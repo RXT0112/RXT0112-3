@@ -1,0 +1,11 @@
+.m-boost-publisher--settings {
+  padding: 16px;
+  @include m-theme(){
+    background-color: themed($m-white);
+  }
+
+  h2 {
+    margin: 0;
+    font-weight: 600;
+  }
+}

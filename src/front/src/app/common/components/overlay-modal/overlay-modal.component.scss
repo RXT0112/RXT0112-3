@@ -1,0 +1,125 @@
+.m-overlay-modal {
+  position: fixed;
+  right: 2vw;
+  left: 2vw;
+  margin: auto;
+  z-index: 9999999;
+
+  top: 50%;
+  max-height: 98vh;
+
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 990px;
+  padding: ($minds-padding * 4);
+
+  outline: 0;
+  border-radius: 6px;
+
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  font-family: 'Roboto', sans-serif;
+
+  @include m-theme(){
+    color: themed($m-grey-700);
+    background: none rgba(themed($m-white), 0.95);
+  }
+
+  &.m-overlay-modal--large {
+    max-width: 990px;
+  }
+
+  &.m-overlay-modal--medium-large {
+    max-width: 800px;
+  }
+
+  &.m-overlay-modal--medium {
+    max-width: 600px;
+  }
+
+  &.m-overlay-modal--small {
+    max-width: 480px;
+    padding: 16px;
+    @include m-theme(){
+      background-color: themed($m-white);
+    }
+  }
+
+  &.m-overlay-modal--no-padding {
+    padding: 0px;
+
+    .post {
+      margin: 0px;
+    }
+  }
+
+  &:not(.m-overlay-modal--top) {
+    transform: translateY(-50%);
+  }
+  &.m-overlay-modal--top {
+    top: 150px;
+  }
+
+  @media screen and (max-width: $max-mobile) {
+    padding: ($minds-padding * 2) ($minds-padding * 4);
+  }
+
+  @media screen and (max-height: 850px) {
+    max-height: 96vh;
+  }
+
+  @media screen and (max-height: 750px) {
+    max-height: 98vh;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.m-overlay-modal--overflow {
+  overflow: visible;
+}
+
+.m-overlay-modal--close {
+  position: absolute;
+  top: $minds-padding * 2;
+  right: $minds-padding * 2;
+  z-index: 99999999;
+
+  display: inline-block;
+  padding: $minds-padding;
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  @include m-theme(){
+    background-color: rgba(themed($m-black), 0.05);
+    color: themed($m-grey-400);
+  }
+
+  @media screen and (max-width: $max-mobile) {
+    right: $minds-padding;
+  }
+
+  > i.material-icons {
+    font-size: 32px;
+  }
+}
+
+body.m-overlay-modal--shown {
+  overflow: hidden;
+}
+
+.m-overlay-modal--backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999998;
+  @include m-theme(){
+    background-color: rgba(themed($m-black-always), 0.5);
+  }
+}

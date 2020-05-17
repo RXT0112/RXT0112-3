@@ -22,5 +22,13 @@ RUN useradd \
 RUN apt update \
   && apt upgrade -y \
   && apt dist-upgrade -y \
+  && apt install -y shellcheck \
   && apt autoremove -y \
   && rm -r /var/lib/apt/lists/*
+
+# Add nektos's act to test github actions, Thank You! <3
+# NOTICE: Unable to build -> Disabled for now
+RUN if ! command -v act >/dev/null; false; then \
+  apt install -y golang-go git wget \
+  && wget https://github.com/nektos/act/archive/v0.2.1.tar.gz \
+  && make -C act install; fi

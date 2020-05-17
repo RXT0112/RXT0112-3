@@ -1,0 +1,30 @@
+name: PHP
+
+# Relevant to events - https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows
+on: 
+  pull_request:
+    types: [synchronize, opened, reopened, ready_for_review]
+    paths:
+    - '**.php'
+
+# composer require overtrue/phplint --dev -vvv
+
+jobs:
+  # Linting
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Installing dependencies..
+        run: |
+          # Install composer
+          if ! apt list --installed | grep -qP "^composer - .*"; then sudo apt install -y composer; fi
+          # Install phplint
+          if ! command -v phplint >/dev/null; then composer require overtrue/phplint --dev -vvv; fi
+      - name: Linting..
+        run: |
+          cd "$GITHUB_WORKSPACE" && for file in $(git ls-tree --name-only -r ${{ github.sha }} | grep '\.php$'); do
+            printf 'linting php file %s\n' "$file"
+            "$GITHUB_WORKSPACE/vendor/bin/phplint" --jobs="$(nproc)" --configuration="$GITHUB_WORKSPACE/.github/workflow-config/phplint.yml" "$file"
+          done
+

@@ -1,0 +1,25 @@
+name: JSON
+
+# Relevant to events - https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows
+on: 
+  pull_request:
+    types: [synchronize, opened, reopened, ready_for_review]
+    paths:
+    - '**.json'
+
+jobs:
+  # Linting
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Installing dependencies..
+        run: |
+          if ! apt list --installed | grep -qP "^npm -.*"; then sudo apt install -y npm;fi
+          [ ! -x jsonlint ] && npm install jsonlint -g
+      - name: Linting..
+        run: |
+          cd "$GITHUB_WORKSPACE" && for file in $(git ls-tree --name-only -r ${{ github.sha }} | grep '\.json$'); do
+            printf 'linting shell file %s' "$file"
+            jsonlint "$file"
+          done
